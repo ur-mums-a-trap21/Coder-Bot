@@ -7,6 +7,7 @@ import time
 import datetime
 import lists
 from lists import insults
+import os
 
 bot = commands.Bot(command_prefix = 'c.')
 bot_request = "398983251101745182"
@@ -140,4 +141,6 @@ class startup():
                 await bot.send_message(message.author, ":x: Please only paste your bot's ID in #bot-requests")
         await bot.process_commands(message)
 
-bot.run("MzkyNTcwNTQxNDg5NTIwNjQw.DRpJWA.n48oPgQ5ACx_-J-N0Sfe1mtq9Dk")
+if not os.environ.get('TOKEN'):
+        print("No Token Found")
+bot.run(os.environ.get('TOKEN').strip('\"'))
