@@ -128,19 +128,19 @@ class startup():
       
     @bot.event
     async def on_message(message):
-      if message.channel.id == bot_request:
-          if message.author.id != bot.user.id:
-              if len(message.content) == 18:
-                  invite = "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=0".format(message.content)
-                  embed = discord.Embed(title="Bot added", description="'[{}]({})'".format("Bot invite", invite), color = 0x00ff00)
-                  embed.add_field(name="Bot Lister", value=message.author, inline= True)
-                  await bot.delete_message(message)
-                  await bot.send_message(message.channel, embed=embed)
-                  await bot.send_message(verif, embed=embed)
-              else:
-                  await bot.delete_message(message)
-                  await bot.send_message(message.author, ":x: Please only paste your bot's ID in #bot-requests")
-          await bot.process_commands(message)
+        if message.channel.id == bot_request:
+            if message.author.id != bot.user.id:
+                if len(message.content) == 18:
+                    invite = "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=0".format(message.content)
+                    embed = discord.Embed(title="Bot added", description="'[{}]({})'".format("Bot invite", invite), color = 0x00ff00)
+                    embed.add_field(name="Bot Lister", value=message.author, inline= True)
+                    await bot.delete_message(message)
+                    await bot.send_message(message.channel, embed=embed)
+                    await bot.send_message(verif, embed=embed)
+                else:
+                    await bot.delete_message(message)
+                    await bot.send_message(message.author, ":x: Please only paste your bot's ID in #bot-requests")
+        await bot.process_commands(message)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
