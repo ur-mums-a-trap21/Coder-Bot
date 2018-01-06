@@ -61,15 +61,15 @@ class startup():
 
     @bot.command(pass_context = True)
     async def iamasync(ctx):
-        role = discord.utils.get(ctx.message.server.roles, name="Discord.py")
+        role = discord.utils.get(ctx.message.server.roles, name="Discord.py Async")
         if "Discord.py Async" in [role.name for role in ctx.message.author.roles]:
             await bot.remove_roles(ctx.message.author, role)
-            await bot.say(":x:  | You already had the `Discord.py` role added, so I removed it")
+            await bot.say(":x:  | You already had the `Discord.py Async` role added, so I removed it")
             msg = '{} removed their role `Discord.py Asyc`'.format(ctx.message.author)
             await bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
         else:
             await bot.add_roles(ctx.message.author, role)
-            await bot.say(":white_check_mark: | I've Given You The `Discord.py` Role")
+            await bot.say(":white_check_mark: | I've Given You The `Discord.py Async` Role")
             msg = '{} gave themself the role `Discord.py Async`'.format(ctx.message.author)
             await bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
 
@@ -134,7 +134,7 @@ class startup():
                 embed = discord.Embed(title="Bot added", description="'[{}]({})'".format("Bot invite", invite), color = 0x00ff00)
                 embed.add_field(name="Bot Lister", value=message.author, inline=False)
                 await bot.delete_message(message)
-                await bot.send_message(message.channel, embed = embed)
+                await bot.say(embed = embed)
                 await bot.send_message(verif, embed=embed)
             else:
                 await bot.delete_message(message)
