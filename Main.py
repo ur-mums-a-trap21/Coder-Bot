@@ -131,8 +131,8 @@ class startup():
         if message.channel.id == bot_request:
             if message.author.id != bot.user.id:
                 if len(message.content) == 18:
-                    invite = "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=0".format(message.content)
-                    embed = discord.Embed(title="Bot added", description="'[{}]({})'".format("Bot invite", invite), color = 0x00ff00)
+                    invite = "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=104123457".format(message.content)
+                    embed = discord.Embed(title="Bot Added! | Please Wait For Mods To Verify The Bot!", description="'[{}]({})'".format("Bot invite", invite), color = 0x00ff00)
                     embed.add_field(name="Bot Lister", value=message.author, inline= True)
                     await bot.delete_message(message)
                     await bot.send_message(message.channel, embed=embed)
